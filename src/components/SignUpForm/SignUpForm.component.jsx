@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import Button from "../Button/Button.component";
 import InputField from "../InputField/InputField.component";
+import { UserContext } from "../../contexts/user.context";
 import "./SignUpForm.styles.scss";
 
 const defaultFormFields = {
@@ -41,6 +42,8 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const [errorMessage, setErrorMessage] = useState("");
+  const {setCurrentUser} = useContext(UserContext);
+ 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -59,6 +62,7 @@ const SignUpForm = () => {
           password
         );
         await createUserDocumentFromAuth(user, { displayName });
+        setCurrentUser({user});
         resetFormFields();
       } else {
         console.error("password Confirmpassword must be same");
