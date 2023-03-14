@@ -30,7 +30,7 @@ const INPUT_FIELDS = [
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const {setCurrentUser} = useContext(UserContext);
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
