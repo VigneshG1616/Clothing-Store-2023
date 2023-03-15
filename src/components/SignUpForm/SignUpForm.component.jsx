@@ -42,8 +42,8 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const [errorMessage, setErrorMessage] = useState("");
-  const {setCurrentUser} = useContext(UserContext);
- 
+  const { setCurrentUser } = useContext(UserContext);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -62,7 +62,7 @@ const SignUpForm = () => {
           password
         );
         await createUserDocumentFromAuth(user, { displayName });
-        setCurrentUser({user});
+        setCurrentUser({ user });
         resetFormFields();
       } else {
         console.error("password Confirmpassword must be same");
@@ -94,7 +94,6 @@ const SignUpForm = () => {
           );
         })}
         <Button>Sign Up</Button>
-       
       </form>
     </div>
   );
