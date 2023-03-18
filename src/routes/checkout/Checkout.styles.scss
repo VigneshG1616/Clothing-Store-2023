@@ -24,11 +24,15 @@
     }
 
     .total {
+        width: 100%;
         margin-top: 30px;
-        margin-left: auto;
         font-size: 36px;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        .total-cart-count{
+            font-size: 24px;
+        }
     }
 
     .no-items{
