@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard/ProductCard.component";
-import "./CategoriesPreview.styles.scss";
+import "./CategoryPreview.styles.scss";
 
-const CategoriesPreview = ({ title, products }) => {
+const CategoryPreview = ({ title, products }) => {
   return (
     <div className="category-preview-container">
       <h2>
@@ -18,4 +18,4 @@ const CategoriesPreview = ({ title, products }) => {
   );
 };
 
-export default CategoriesPreview;
+export default CategoryPreview;
