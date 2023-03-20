@@ -36,8 +36,8 @@ const Checkout = () => {
         ))
       ) : (
         <div className="no-items">
-          {" "}
-          <span>"No Items in the cart"</span>{" "}
+         
+          <span>"No Items in the cart"</span>
         </div>
       )}
       <div className="total">
@@ -47,12 +47,12 @@ const Checkout = () => {
           <span>{`TOTAL: $ ${cartTotalPrice}`}</span>
           </>
         ) : (
-          <div className="no-items">
+          <div className="no-items-shop-btn">
             <span className="go-to-shop" onClick={goToShopHandler}>
               SHOP NOW
             </span>
           </div>
-        )}{" "}
+        )}
       </div>
     </div>
   );
