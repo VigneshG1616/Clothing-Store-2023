@@ -1,10 +1,10 @@
-import "./InputField.styles.scss";
+import {Group,FormInput,FormInputLabel }from "./InputField.styles.jsx";
 
 const InputField = ({ label, name, type, value, handleChange }) => {
   return (
-    <div className="group">
-      <input
-        className="form-input"
+    <Group>
+      <FormInput
+        
         type={type}
         name={name}
         value={value}
@@ -12,14 +12,14 @@ const InputField = ({ label, name, type, value, handleChange }) => {
         required
       />
       {label && (
-        <label
+        <FormInputLabel
           htmlFor=""
-          className={`${value.length && "shrink"} form-input-label`}
+          shrink={value.length}
         >
           {label}
-        </label>
+        </FormInputLabel>
       )}
-    </div>
+    </Group>
   );
 };
 

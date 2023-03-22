@@ -3,58 +3,50 @@ import { useNavigate } from "react-router-dom";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem.component";
 import { CartContext } from "../../contexts/cart.context";
 
-import "./Checkout.styles.scss";
+import {CheckoutContainer, CheckoutHeader, HeaderBlock, Total, NoItems,NoItemsShopBtn} from "./Checkout.styles";
+
+const Header_Block_Titles = ["Product", "Description", "Quantity", "Price", "Remove"  ]
 
 const Checkout = () => {
-  const { cartItems, cartTotalPrice, setIsDropdownOn, cartCount } =
+  const { cartItems, cartTotalPrice, cartCount } =
     useContext(CartContext);
-  setIsDropdownOn(false);
   const goToShop = useNavigate();
   const goToShopHandler = () => goToShop("/shop");
   return (
-    <div className="checkout-container">
-      <div className="checkout-header">
-        <div className="header-block">
-          <span>Product</span>
-        </div>
-        <div className="header-block">
-          <span>Description</span>
-        </div>
-        <div className="header-block">
-          <span>Quantity</span>
-        </div>
-        <div className="header-block">
-          <span>Price</span>
-        </div>
-        <div className="header-block">
-          <span>Remove</span>
-        </div>
-      </div>
+    <CheckoutContainer>
+      <CheckoutHeader>
+        {
+          Header_Block_Titles.map((title,i)=><HeaderBlock key={i}>
+          <span>{title}</span>
+        </HeaderBlock>)
+        }
+        
+      </CheckoutHeader>
       {cartItems.length ? (
         cartItems.map((cartItem) => (
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))
       ) : (
-        <div className="no-items">
+        <NoItems>
          
           <span>"No Items in the cart"</span>
-        </div>
+        </NoItems>
       )}
-      <div className="total">
+      <Total>
         {cartTotalPrice ? (
           <>
           <span className="total-cart-count">{`Items: ${cartCount}`}</span>
           <span>{`TOTAL: $ ${cartTotalPrice}`}</span>
           </>
         ) : (
-          <div className="no-items-shop-btn">
+          <NoItemsShopBtn>
             <span className="go-to-shop" onClick={goToShopHandler}>
               SHOP NOW
             </span>
-          </div>
+          </NoItemsShopBtn>
         )}
-      </div>
-    </div>
+      </Total>
+    </CheckoutContainer>
   );
 };
 

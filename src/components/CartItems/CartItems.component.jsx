@@ -1,17 +1,17 @@
 
-import "./CartItems.styles.scss";
+import {CartItemsDropdownContainer,ItemDetails,ItemName} from "./CartItems.styles";
 
 const CartItems = ({name,imageUrl,price,quantity}) => {
   
 
   return (
-    <div className="cart-items-dropdown-container">
+    <CartItemsDropdownContainer>
       <img src={imageUrl} alt={`cart ${name}`} />
-      <div className="item-details">
-     <span className="name">{name}</span>
+      <ItemDetails>
+     <ItemName>{name}</ItemName>
      <span>{`${quantity} x ${price}$`}</span>
-      </div>
-    </div>
+      </ItemDetails>
+    </CartItemsDropdownContainer>
   );
 };
 
