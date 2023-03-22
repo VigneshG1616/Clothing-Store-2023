@@ -1,20 +1,27 @@
+import {useNavigate} from "react-router-dom";
+import Button, {BUTTON_TYPE_CLASSES} from "../Button/Button.component";
 import ProductCard from "../ProductCard/ProductCard.component";
-import "./CategoryPreview.styles.scss";
+import {CategoryPreviewContainer, Preview, NavigateCategoryBtnContainer} from "./CategoryPreview.styles";
 
 const CategoryPreview = ({ title, products }) => {
+  const navigateCategory = useNavigate();
+  const navigateCategoryHandler =()=>navigateCategory(title);
   return (
-    <div className="category-preview-container">
+    <CategoryPreviewContainer>
       <h2>
         <span className="title">{title.toUpperCase()}</span>
       </h2>
-      <div className="preview">
+      <Preview>
         {products
           .filter((_, i) => i < 4)
           .map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-      </div>
-    </div>
+      </Preview>
+      <NavigateCategoryBtnContainer>
+      <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={navigateCategoryHandler} >More</Button>
+      </NavigateCategoryBtnContainer>
+    </CategoryPreviewContainer>
   );
 };
 
