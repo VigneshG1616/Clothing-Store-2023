@@ -1,5 +1,5 @@
 import Styled from "styled-components";
-
+import {Link} from "react-router-dom";
 export const BackgroundImage = Styled.div`
 width: 100%;
 height: 100%;
@@ -9,7 +9,7 @@ background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 
 `;
 
-export const DirectoryBodyContainer = Styled.div`
+export const DirectoryBodyContainer = Styled(Link)`
 
 height: 90px;
 padding: 0 25px;
