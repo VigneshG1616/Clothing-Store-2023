@@ -7,6 +7,7 @@ import Button, {BUTTON_TYPE_CLASSES} from "../Button/Button.component";
 import InputField from "../InputField/InputField.component";
 
 import {SignUPConatiner, ButtonsContainer} from  "./SignInForm.styles.jsx";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   email: "",
@@ -29,6 +30,7 @@ const INPUT_FIELDS = [
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -45,6 +47,7 @@ const SignInForm = () => {
       await runSignInWithEmailAndPassword(email, password);
 
       resetFormFields();
+      navigate("/shop")
     } catch (err) {
       console.log("handle submit error ", err);
     }
