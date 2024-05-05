@@ -1,8 +1,6 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { UserContext } from "../../contexts/user.context";
-import { CartContext } from "../../contexts/cart.context";
 import CartIcon from "../../components/CartIcon/CartIcon.component";
 import CartDropdown from "../../components/CartDropdown/CartDropdown.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -12,10 +10,14 @@ import {
   NavLinksContainer,
   NavLink,
 } from "./Navigation.styles.jsx";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/user.selector.js";
+import { selectIsCartOpen } from "../../store/cart/cart.selector.js";
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
-  const { isDropdownOn } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
+  const isDropdownOn = useSelector(selectIsCartOpen);
+
   const handleSignOut = async () => {
     await signOutUser();
   };
