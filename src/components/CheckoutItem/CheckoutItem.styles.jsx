@@ -12,6 +12,7 @@ img {
 
 export const Arrow = Styled.div`
 cursor: pointer;
+cursor: ${props=>props.quantity === 1 && props.decrement === "true" ? "not-allowed" :"pointer"};
 font-size: 25px;
 -webkit-user-select: none; /* Safari */
 -ms-user-select: none; /* IE 10 and IE 11 */

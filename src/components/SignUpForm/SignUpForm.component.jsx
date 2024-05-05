@@ -5,8 +5,8 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import Button from "../Button/Button.component";
 import InputField from "../InputField/InputField.component";
-import { UserContext } from "../../contexts/user.context";
 import {SignUpContainer} from "./SignUpForm.styles";
+import { setCurrentUser } from "../../store/user/user.action";
 
 const defaultFormFields = {
   displayName: "",
@@ -42,7 +42,6 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const [errorMessage, setErrorMessage] = useState("");
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
